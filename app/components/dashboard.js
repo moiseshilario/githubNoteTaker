@@ -61,14 +61,14 @@ export default class Dashboard extends Component {
           style={styles.btnRepos}
           //onPress={this.goToRepos.bind(this)}
           underlayColor='#88D4F5'>
-           <Text style={styles.buttonText}> View Profile </Text> 
+           <Text style={styles.buttonText}> View Repos </Text> 
         </TouchableHighlight>
 
         <TouchableHighlight
           style={styles.btnNotes}
           //onPress={this.goToNotes.bind(this)}
           underlayColor='#88D4F5'>
-           <Text style={styles.buttonText}> View Profile </Text> 
+           <Text style={styles.buttonText}> View Ntes </Text> 
         </TouchableHighlight>
       </View>
     )
