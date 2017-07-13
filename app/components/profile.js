@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
 import Badge from './badge'
+import Separator from './helpers/separator'
 
 import {
   Text,
@@ -47,9 +47,8 @@ export default class Profile extends Component {
 
   render(){
     let { userInfo } = this.props
-    console.log(userInfo)
-
     let jsonAttributes = Object.keys(topicObject)
+
     let list = Object.keys(userInfo).map((item, index) => {
       if(jsonAttributes.includes(item)){
         return (
@@ -58,10 +57,12 @@ export default class Profile extends Component {
               <Text style={styles.rowTitle}> { topicObject[item] }</Text>
               <Text style={styles.rowContent}> { userInfo[item] }</Text>
             </View>
+            <Separator/>
           </View>
         )
       }
     })
+    
     return (
       <ScrollView style={styles.container}>
         <Badge userInfo={this.props.userInfo}/>
