@@ -1,5 +1,5 @@
 import { styles } from './badge.css'
-import React, { Component } from 'react'
+import React from 'react'
 
 import {
   Text,

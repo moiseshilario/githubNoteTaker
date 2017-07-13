@@ -1,6 +1,6 @@
 import { Badge , Separator } from '../../../components'
 import { styles } from './profile.css'
-import React, { Component } from 'react'
+import React from 'react'
 
 import {
   Text,
