@@ -53,7 +53,7 @@ goToProfile = ()=> {
   this.props.navigator.push({
     component: Profile,
     title: 'Profile Page',
-    passProps: { userInfor: this.props.userInfo }
+    passProps: { userInfo: this.props.userInfo }
   })
 }
 

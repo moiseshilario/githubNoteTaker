@@ -51,12 +51,12 @@ export default class Profile extends Component {
 
     let jsonAttributes = Object.keys(topicObject)
     let list = Object.keys(userInfo).map((item, index) => {
-      if(jsonAttributes.contains(item)){
+      if(jsonAttributes.includes(item)){
         return (
           <View key={index}>
             <View style={styles.rowContainer}>
               <Text style={styles.rowTitle}> { topicObject[item] }</Text>
-              <Text style={styles.rowContent}> { userInfo.item }</Text>
+              <Text style={styles.rowContent}> { userInfo[item] }</Text>
             </View>
           </View>
         )
