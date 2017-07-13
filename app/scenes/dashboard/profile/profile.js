@@ -18,9 +18,7 @@ const topicObject = {
     public_repos: 'Public Repos',
 }
 
-class Profile extends Component {
-  render () {
-    let { userInfo } = this.props
+const Profile = ({ userInfo }) => {
     let jsonAttributes = Object.keys(topicObject)
 
     let list = Object.keys(userInfo).map((item, index) => {
@@ -39,11 +37,11 @@ class Profile extends Component {
     
     return (
       <ScrollView style={styles.container}>
-        <Badge userInfo={this.props.userInfo}/>
+        <Badge userInfo={userInfo}/>
         {list}
       </ScrollView>
     )
-  }
+  
 }
 
 export default Profile
