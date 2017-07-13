@@ -14,10 +14,12 @@ const styles = StyleSheet.create({
   }
 })
 
-export default class Separator extends Component {
+class Separator extends Component {
   render(){
     return (
       <View style={styles.separator}/>
     )
   }
 }
+
+export { Separator }

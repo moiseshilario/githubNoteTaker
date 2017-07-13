@@ -1,4 +1,4 @@
-import Profile from '../profile/profile'
+import Profile from './profile/profile'
 import { styles } from './dashboard.css'
 import React, { Component } from 'react'
 
@@ -10,14 +10,14 @@ import {
   TouchableHighlight
 } from 'react-native'
 
-export default class Dashboard extends Component {
-goToProfile = ()=> {
-  this.props.navigator.push({
-    component: Profile,
-    title: 'Profile Page',
-    passProps: { userInfo: this.props.userInfo }
-  })
-}
+class Dashboard extends Component {
+  goToProfile = ()=> {
+    this.props.navigator.push({
+      component: Profile,
+      title: 'Profile Page',
+      passProps: { userInfo: this.props.userInfo }
+    })
+  }
 
   render(){
     return (
@@ -48,3 +48,5 @@ goToProfile = ()=> {
     )
   }
 }
+
+export default Dashboard 

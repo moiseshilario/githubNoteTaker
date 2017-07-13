@@ -7,7 +7,7 @@ import {
   Image
 } from 'react-native'
 
-export default class Badge extends Component {
+class Badge extends Component {
   render(){
     return (
       <View style={styles.container}>
@@ -19,3 +19,4 @@ export default class Badge extends Component {
   }
 }
 
+export { Badge }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Main from './app/components/main/main';
+import Main from './app/scenes/main/main';
 import {
   Text,
   View,

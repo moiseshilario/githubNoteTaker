@@ -1,7 +1,6 @@
-import Badge from '../badge/badge'
+import { Badge, Separator } from '../../components'
 import React, { Component } from 'react'
 import { styles } from './repositories.css'
-import Separator from '../helpers/separator'
 
 import {
   Text,
@@ -10,7 +9,7 @@ import {
   TouchableHighlight
 } from 'react-native'
 
-export default class Repositories extends Component {
+class Repositories extends Component {
   render(){
     return (
       <ScrollView style={styles.container}>
@@ -19,3 +18,5 @@ export default class Repositories extends Component {
     )
   }
 }
+
+export default Repositories

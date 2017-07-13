@@ -1,7 +1,6 @@
-import Badge from '../badge/badge'
+import { Badge , Separator } from '../../../components'
 import { styles } from './profile.css'
 import React, { Component } from 'react'
-import Separator from '../helpers/separator'
 
 import {
   Text,
@@ -17,11 +16,10 @@ const topicObject = {
     email: 'Email',
     bio: 'Bio',
     public_repos: 'Public Repos',
-  }
+}
 
-export default class Profile extends Component {
-
-  render(){
+class Profile extends Component {
+  render () {
     let { userInfo } = this.props
     let jsonAttributes = Object.keys(topicObject)
 
@@ -47,3 +45,5 @@ export default class Profile extends Component {
     )
   }
 }
+
+export default Profile
