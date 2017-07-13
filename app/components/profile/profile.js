@@ -1,36 +1,13 @@
+import Badge from '../badge/badge'
+import { styles } from './profile.css'
 import React, { Component } from 'react'
-import Badge from './badge'
-import Separator from './helpers/separator'
+import Separator from '../helpers/separator'
 
 import {
   Text,
   View,
-  StyleSheet,
   ScrollView
 } from 'react-native'
-
-
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  buttonText: {
-    fontSize: 18,
-    color: 'white',
-    alignSelf: 'center'
-  },
-  rowContainer: {
-    padding: 10
-  },
-  rowTitle: {
-    color: '#48BBEC',
-    fontSize: 16
-  },
-  rowContent: {
-    fontSize: 19
-  }
-});
 
 const topicObject = {
     company: 'Company' ,
@@ -43,7 +20,6 @@ const topicObject = {
   }
 
 export default class Profile extends Component {
-  
 
   render(){
     let { userInfo } = this.props

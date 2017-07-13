@@ -1,17 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import Main from './app/components/main';
 import React, { Component } from 'react';
+import Main from './app/components/main/main';
 import {
-  AppRegistry,
-  StyleSheet,
   Text,
-  NavigatorIOS,
   View,
+  AppRegistry,
+  NavigatorIOS
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -33,8 +26,5 @@ export default class githubNotetaker extends Component {
     );
   }
 }
-
-
- 
 
 AppRegistry.registerComponent('githubNotetaker', () => githubNotetaker);
