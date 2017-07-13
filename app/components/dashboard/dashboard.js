@@ -1,4 +1,4 @@
-import Profile from './profile'
+import Profile from '../profile/profile'
 import { styles } from './dashboard.css'
 import React, { Component } from 'react'
 

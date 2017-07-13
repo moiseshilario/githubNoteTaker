@@ -33,7 +33,7 @@ export default class Profile extends Component {
               <Text style={styles.rowTitle}> { topicObject[item] }</Text>
               <Text style={styles.rowContent}> { userInfo[item] }</Text>
             </View>
-            <Separator/>
+            <Separator></Separator>
           </View>
         )
       }

@@ -3,6 +3,7 @@ import Main from './app/components/main/main';
 import {
   Text,
   View,
+  StyleSheet,
   AppRegistry,
   NavigatorIOS
 } from 'react-native';

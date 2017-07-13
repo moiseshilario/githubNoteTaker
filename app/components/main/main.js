@@ -1,4 +1,4 @@
-import api from '../utils/api'
+import api from '../../utils/api'
 import { styles } from './main.css'
 import React, { Component } from 'react'
 import Dashboard from '../dashboard/dashboard'
