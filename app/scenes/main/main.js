@@ -1,4 +1,4 @@
-import api from '../../utils/api'
+import API from '../../utils/api'
 import { styles } from './main.css'
 import React, { Component } from 'react'
 import Dashboard from '../dashboard/dashboard'
@@ -31,7 +31,7 @@ class Main extends Component {
      this.setState({
        isLoading: true
      })
-     api.getBio(this.state.username)
+     API.getBio(this.state.username)
       .then((res) => {
         if(res.message === 'Not Found'){
           this.setState({
