@@ -1,6 +1,8 @@
+import React from 'react'
+import API from '../../utils/api'
 import Profile from './profile/profile'
 import { styles } from './dashboard.css'
-import React from 'react'
+import Repositories from './repositories/repositories'
 
 import {
   View,
@@ -19,6 +21,21 @@ const Dashboard = ({ userInfo, navigator }) => {
     })
   }
 
+  goToRepos = () => {
+    API.getRepos(userInfo.login)
+      .then((repos) => {
+        navigator.push({
+          component: Repositories,
+          title: 'Repos',
+          passProps: {
+            userInfo,
+            repos,
+            navigator
+          }
+        })
+      })
+  }
+
   return (
     <View style={styles.container}>
       <Image source={{ uri: userInfo.avatar_url }} style={styles.image} />
@@ -32,7 +49,7 @@ const Dashboard = ({ userInfo, navigator }) => {
 
       <TouchableHighlight
         style={styles.btnRepos}
-      //onPress={this.goToRepos.bind(this)}
+        onPress={this.goToRepos}
       >
         <Text style={styles.buttonText}> View Repos </Text>
       </TouchableHighlight>
