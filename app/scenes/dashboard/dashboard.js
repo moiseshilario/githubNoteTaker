@@ -1,6 +1,7 @@
 import React from 'react'
 import API from '../../utils/api'
 import Profile from './profile/profile'
+import Notes from './notes/notes'
 import { styles } from './dashboard.css'
 import Repositories from './repositories/repositories'
 
@@ -36,6 +37,24 @@ const Dashboard = ({ userInfo, navigator }) => {
       })
   }
 
+  goToNotes = () => {
+    console.log(userInfo)
+    API.getNotes(userInfo.login)
+      .then((notes) => {
+        console.log("TAFA" + notes);
+        notes = notes || {};
+        
+        navigator.push({
+          component: Notes,
+          title: 'Notes',
+          passProps: {
+            notes,
+            userInfo
+          }
+        })
+      })
+  }
+
   return (
     <View style={styles.container}>
       <Image source={{ uri: userInfo.avatar_url }} style={styles.image} />
@@ -56,7 +75,7 @@ const Dashboard = ({ userInfo, navigator }) => {
 
       <TouchableHighlight
         style={styles.btnNotes}
-      //onPress={this.goToNotes.bind(this)}
+        onPress={this.goToNotes.bind(this)}
       >
         <Text style={styles.buttonText}> View Notes </Text>
       </TouchableHighlight>
