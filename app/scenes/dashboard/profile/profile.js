@@ -15,6 +15,7 @@ const topicObject = Object.entries({
   following: 'Following',
   email: 'Email',
   bio: 'Bio',
+  public_repos: 'Public Repos'
 })
 
 const Profile = ({ userInfo }) => {
@@ -27,6 +28,7 @@ const Profile = ({ userInfo }) => {
           const value = userInfo[key]
           
           return (
+            <View key={key}>
               <View style={styles.rowContainer}>
                 <Text style={styles.rowTitle}> {title} </Text>
                 <Text style={styles.rowContent}> {value} </Text>
@@ -36,6 +38,7 @@ const Profile = ({ userInfo }) => {
           )
         })
       }
+    </ScrollView>
   )
 
 }
