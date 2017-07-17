@@ -16,7 +16,7 @@ const API = {
   },
   addNote: (username, note) => {
     username = username.toLowerCase().trim()
-    let url = `https://github-saver-61205.firebaseio.com/ ${username}.json`;
+    let url = `https://github-saver-61205.firebaseio.com/${username}.json`;
     return fetch(url, {
       method: 'post',
       body: JSON.stringify(note)
