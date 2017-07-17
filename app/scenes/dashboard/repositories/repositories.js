@@ -1,5 +1,5 @@
-import { Badge, Separator } from '../../../components'
-import React, { Component } from 'react'
+import { Badge, Separator, Web } from '../../../components'
+import React from 'react'
 import { styles } from './repositories.css'
 
 import {
@@ -9,24 +9,31 @@ import {
   TouchableHighlight
 } from 'react-native'
 
-const Repositories = ({ userInfo, repos }) => {
-  openPage = (url) => {
-    console.log('the url: ', url)
+const Repositories = ({ userInfo, repos, navigator }) => {
+  openPage = (url, name) => {
+    console.log("tafa")
+    navigator.push({
+      component: Web,
+      title: name,
+      passProps: { url }
+    })
   }
 
   const list = repos.map((item, index) => {
-    const desc = repos[index].description ? <Text style={styles.description}> {repos[index].description} </Text> : <View/>
-
+    const { html_url, name, stargazers_count, description } = item
+    
     return (
       <View key={index}>
         <View style={styles.rowContainer}>
           <TouchableHighlight
-            onPress={this.openPage(repos[index.html_url])}
+            onPress={this.openPage.bind(this, html_url, name)}
             underlayColor='transparent'>
-            <Text style={styles.name}> {repos[index].name} </Text>
+            <Text style={styles.name}> {name} </Text>
           </TouchableHighlight>
-          <Text style={styles.stars}> Stars: {repos[index].stargazers_count}</Text>
-          {desc}
+          <Text style={styles.stars}> Stars: {stargazers_count}</Text>
+          {
+            description && <Text style={styles.description}> {description} </Text>
+          }
         </View>
         <Separator />
       </View>
