@@ -8,20 +8,17 @@ import Button from 'react-native-button'
 import {
   View,
   Text,
-  ListView,
+  FlatList,
   TextInput,
   TouchableHighlight
 } from 'react-native'
 
-const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 })
-
-
 
 class Notes extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
-      dataSource: ds.cloneWithRows(this.props.notes),
       note: '',
       error: ''
     }
@@ -35,34 +32,18 @@ class Notes extends Component {
 
   handleSubmit() {
     let note = this.state.note;
-   
-      this.setState({
-        note: ''
+
+    this.setState({
+      note: ''
+    })
+
+    API.addNote(this.props.userInfo.login, note)
+      .then((data) => {
+        API.getNotes(this.props.userInfo.login)
+      }).catch((err) => {
+        console.log('Request failed: ', err)
+        this.setState({ error })
       })
-
-      API.addNote(this.props.userInfo.login, note)
-        .then((data) => {
-          API.getNotes(this.props.userInfo.login)
-            .then((data) => {
-              this.setState({
-                dataSource: ds.cloneWithRows(data)
-              })
-            })
-        }).catch((err) => {
-          console.log('Request failed: ', err)
-          this.setState({ error })
-        })
-  }
-
-  renderRow(rowData) {
-    return (
-      <View>
-        <View style={styles.rowContainer}>
-          <Text> {rowData}</Text>
-        </View>
-        <Separator />
-      </View>
-    )
   }
 
   footer() {
@@ -77,21 +58,33 @@ class Notes extends Component {
           containerStyle={styles.button}
           disabled={this.state.note === ''}
           onPress={this.handleSubmit.bind(this)}>
-          <Text style={[ styles.buttonText, this.state.note != '' && styles.buttonEnabled]}> Submit </Text>
+          <Text style={[styles.buttonText, this.state.note != '' && styles.buttonEnabled]}> Submit </Text>
         </Button>
       </View>
     )
   }
 
+  renderItem = ({ item }) => {
+    return (
+      <View>
+        <View style={styles.rowContainer}>
+          <Text> {item.note}</Text>
+        </View>
+        <Separator />
+      </View>
+    )
+  }
+
   render() {
+    console.log(this.props.notes)
     return (
       <View style={styles.container}>
-        <ListView
-          enableEmptySections={true}
-          dataSource={this.state.dataSource}
-          renderRow={this.renderRow}
-          renderHeader={() => <Badge userInfo={this.props.userInfo} />
-          } />
+
+        <FlatList
+          data={this.props.notes}
+          renderItem={this.renderItem}
+          ListHeaderComponent={<Badge userInfo={this.props.userInfo} />}
+        />
         {this.footer()}
         <KeyboardSpacer />
       </View>
