@@ -38,12 +38,10 @@ const Dashboard = ({ userInfo, navigator }) => {
   }
 
   goToNotes = () => {
-    console.log(userInfo)
     API.getNotes(userInfo.login)
       .then((notes) => {
-        console.log("TAFA" + notes);
         notes = notes || {};
-        
+  
         navigator.push({
           component: Notes,
           title: 'Notes',
