@@ -3,6 +3,7 @@ import { styles } from './notes.css'
 import React, { Component } from 'react'
 import { Badge, Separator } from '../../../components'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
+import Button from 'react-native-button'
 
 import {
   View,
@@ -13,6 +14,8 @@ import {
 } from 'react-native'
 
 const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 })
+
+
 
 class Notes extends Component {
   constructor(props) {
@@ -30,33 +33,34 @@ class Notes extends Component {
     })
   }
 
-  handleSubmit(){
+  handleSubmit() {
     let note = this.state.note;
-    this.setState({
-      note: ''
-    })
-
-    API.addNote(this.props.userInfo.login, note)
-      .then((data) => {
-        API.getNotes(this.props.userInfo.login)
-          .then((data) => {
-            this.setState({
-              dataSource: ds.cloneWithRows(data)
-            })
-          })
-      }).catch((err) => {
-        console.log('Request failed: ', err)
-        this.setState({error})
+   
+      this.setState({
+        note: ''
       })
+
+      API.addNote(this.props.userInfo.login, note)
+        .then((data) => {
+          API.getNotes(this.props.userInfo.login)
+            .then((data) => {
+              this.setState({
+                dataSource: ds.cloneWithRows(data)
+              })
+            })
+        }).catch((err) => {
+          console.log('Request failed: ', err)
+          this.setState({ error })
+        })
   }
 
-  renderRow(rowData){
+  renderRow(rowData) {
     return (
       <View>
         <View style={styles.rowContainer}>
           <Text> {rowData}</Text>
         </View>
-        <Separator/>
+        <Separator />
       </View>
     )
   }
@@ -69,12 +73,12 @@ class Notes extends Component {
           value={this.state.note}
           onChange={this.handleChange.bind(this)}
           placeholder="New Note" />
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.handleSubmit.bind(this)}
-          underlayColor="#88D4F5">
-          <Text style={styles.buttonText}> Submit </Text>
-        </TouchableHighlight>
+        <Button
+          containerStyle={styles.button}
+          disabled={this.state.note === ''}
+          onPress={this.handleSubmit.bind(this)}>
+          <Text style={[ styles.buttonText, this.state.note != '' && styles.buttonEnabled]}> Submit </Text>
+        </Button>
       </View>
     )
   }
@@ -82,17 +86,16 @@ class Notes extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <ListView 
-        enableEmptySections={true}
-        dataSource={this.state.dataSource}
-        renderRow={this.renderRow}
-        renderHeader={() => <Badge userInfo={ this.props.userInfo }/> 
-      } /> 
-      {this.footer()}
-      <KeyboardSpacer/>
-    </View>
+        <ListView
+          enableEmptySections={true}
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow}
+          renderHeader={() => <Badge userInfo={this.props.userInfo} />
+          } />
+        {this.footer()}
+        <KeyboardSpacer />
+      </View>
     )
-    
   }
 }
 

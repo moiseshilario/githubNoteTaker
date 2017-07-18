@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: 'white'
+    color: '#cfcfcf'
   },
   button: {
     height: 60,
@@ -15,6 +15,9 @@ export const styles = StyleSheet.create({
     flex: 3,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  buttonEnabled: {
+    color: 'white'
   },
   searchInput: {
     height: 60,
