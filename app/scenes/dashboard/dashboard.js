@@ -40,18 +40,14 @@ const Dashboard = ({ userInfo, navigator }) => {
   goToNotes = () => {
     API.getNotes(userInfo.login)
       .then((notes) => {
+        console.log("notes: ")
         console.log(notes)
-        let notesArray = []
-
-        notes = notes || {}
-        Object.keys(notes).map((noteKey, index) => {
-          notesArray.push({key: index, note: notes[noteKey]})
-        })
+        notes = notes || []
         navigator.push({
           component: Notes,
           title: 'Notes',
           passProps: {
-            notes: notesArray,
+            notes,
             userInfo
           }
         })
