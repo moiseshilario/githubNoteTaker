@@ -68,13 +68,15 @@ class Notes extends Component {
   renderItem = ({ item }) => {
     const rightBtn = [{
       text: 'Delete',
-      backgroundColor: 'red'
+      backgroundColor: '#f44336',
+      underlayColor: '#d32f2f'
       //onPress: () => { this.deleteNote() }
     }];
 
     const leftBtn = [{
       text: 'Edit',
-      backgroundColor: 'orange'
+      backgroundColor: '#ff9800',
+      underlayColor: '#f57c00'
       //onPress: () => { this.editNote() }
     }];
 
