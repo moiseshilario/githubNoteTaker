@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { Badge, Separator } from '../../../components'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
 import Button from 'react-native-button'
+import Swipeout from 'react-native-swipeout'
 
 import {
   View,
@@ -65,13 +66,29 @@ class Notes extends Component {
   }
 
   renderItem = ({ item }) => {
+    const rightBtn = [{
+      text: 'Delete',
+      backgroundColor: 'red'
+      //onPress: () => { this.deleteNote() }
+    }];
+
+    const leftBtn = [{
+      text: 'Edit',
+      backgroundColor: 'orange'
+      //onPress: () => { this.editNote() }
+    }];
+
+
     return (
-      <View>
+      <Swipeout
+        style={styles.swipeItem}
+        right={rightBtn}
+        left={leftBtn}>
         <View style={styles.rowContainer}>
           <Text> {item.note}</Text>
         </View>
         <Separator />
-      </View>
+      </Swipeout>
     )
   }
 

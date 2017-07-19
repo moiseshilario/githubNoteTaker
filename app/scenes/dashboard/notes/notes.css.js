@@ -27,12 +27,15 @@ export const styles = StyleSheet.create({
     flex: 10
   },
   rowContainer: {
-    padding: 10
+    padding: 20
   },
   footerContainer: {
     backgroundColor: '#E3E3E3',
     alignItems: 'center',
     flexDirection: 'row'
+  },
+  swipeItem: {
+     backgroundColor: 'white'
   }
 });
 
