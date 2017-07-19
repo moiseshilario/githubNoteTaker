@@ -20,6 +20,7 @@ class Notes extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      allNotes: this.props.notes,
       note: '',
       error: ''
     }
@@ -41,6 +42,11 @@ class Notes extends Component {
     API.addNote(this.props.userInfo.login, note)
       .then((data) => {
         API.getNotes(this.props.userInfo.login)
+          .then((notes) => {
+            this.setState({
+              allNotes: notes
+            })
+          })
       }).catch((err) => {
         console.log('Request failed: ', err)
         this.setState({ error })
@@ -100,7 +106,7 @@ class Notes extends Component {
       <View style={styles.container}>
 
         <FlatList
-          data={this.props.notes}
+          data={this.state.allNotes}
           renderItem={this.renderItem}
           ListHeaderComponent={<Badge userInfo={this.props.userInfo} />}
         />
