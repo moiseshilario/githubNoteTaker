@@ -43,4 +43,4 @@ export const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center'
   }
-});
+})

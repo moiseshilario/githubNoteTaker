@@ -5,17 +5,15 @@ import {
   WebView
 } from 'react-native'
 
-const Web = ({ url }) => {
-  return (
-    <View style={{
-      flex: 1,
-      backgroundColor: '#F6F6EF',
-      flexDirection: 'column'
-    }}
-    >
-      <WebView source={{ uri: url }} />
-    </View>
-  )
-}
+const Web = ({ url }) => (
+  <View style={{
+    flex: 1,
+    backgroundColor: '#F6F6EF',
+    flexDirection: 'column'
+  }}
+  >
+    <WebView source={{ uri: url }} />
+  </View>
+)
 
 export { Web }

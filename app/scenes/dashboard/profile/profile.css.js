@@ -19,4 +19,4 @@ export const styles = StyleSheet.create({
   rowContent: {
     fontSize: 19
   }
-});
+})

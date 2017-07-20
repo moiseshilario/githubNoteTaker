@@ -12,35 +12,27 @@ import {
 } from 'react-native'
 
 class Main extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      username: '',
-      isLoading: false,
-      error: false
-    }
-  }
-
-  handleChange(event){
+  handleChange(event) {
     this.setState({
       username: event.nativeEvent.text
     })
   }
 
-  handleSubmit(){
-     this.setState({
-       isLoading: true
-     })
-     API.getBio(this.state.username)
+  handleSubmit() {
+    this.setState({
+      isLoading: true
+    })
+    API.getBio(this.state.username)
       .then((res) => {
-        if(res.message === 'Not Found'){
+        if (res.message === 'Not Found') {
           this.setState({
             error: 'User not found',
             isLoading: false
           })
-        } else {
+        }
+        else {
           this.props.navigator.push({
-            title: res.name || "Select an Option",
+            title: res.name || 'Select an Option',
             component: Dashboard,
             passProps: { userInfo: res }
           })
@@ -53,10 +45,19 @@ class Main extends Component {
       })
   }
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: '',
+      isLoading: false,
+      error: false
+    }
+  }
+
   render() {
     let showErr = (
-      this.state.error ? <Text> { this.state.error } </Text> : <View></View>
-    );
+      this.state.error ? <Text> {this.state.error} </Text> : <View />
+    )
 
     return (
       <View style={styles.mainContainer} >
@@ -64,22 +65,25 @@ class Main extends Component {
         <TextInput
           style={styles.searchInput}
           value={this.state.username}
-          onChange={this.handleChange.bind(this)}/>
+          onChange={this.handleChange.bind(this)}
+        />
         <TouchableHighlight
           style={styles.button}
           onPress={this.handleSubmit.bind(this)}
-          underlayColor="white" >
-           <Text style={styles.buttonText}> SEARCH </Text>
+          underlayColor="white"
+        >
+          <Text style={styles.buttonText}> SEARCH </Text>
         </TouchableHighlight>
         <ActivityIndicator
           animating={this.state.isLoading}
           color="#111"
           size="large"
-          hidesWhenStop="true"></ActivityIndicator>
+          hidesWhenStop="true"
+        />
         {showErr}
       </View>
     )
   }
 }
 
-export default Main 
+export default Main

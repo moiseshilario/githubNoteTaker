@@ -11,20 +11,17 @@ import {
   Text,
   FlatList,
   TextInput,
+  ActivityIndicator,
   TouchableHighlight
 } from 'react-native'
 
+const notesJSONToArray = (notes) => {
+  const entries = Object.entries(notes)
+  return entries.map(([key, note]) => ({ key, note }))
+}
+
 
 class Notes extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      allNotes: this.props.notes,
-      note: '',
-      error: ''
-    }
-  }
 
   handleChange(e) {
     this.setState({
@@ -33,7 +30,7 @@ class Notes extends Component {
   }
 
   handleSubmit() {
-    let note = this.state.note;
+    let note = this.state.note
 
     this.setState({
       note: ''
@@ -44,11 +41,11 @@ class Notes extends Component {
         API.getNotes(this.props.userInfo.login)
           .then((notes) => {
             this.setState({
-              allNotes: notes
+              allNotes: notesJSONToArray(notes)
             })
           })
-      }).catch((err) => {
-        console.log('Request failed: ', err)
+      }).catch((error) => {
+        console.log('Request failed: ', error)
         this.setState({ error })
       })
   }
@@ -60,55 +57,93 @@ class Notes extends Component {
           style={styles.searchInput}
           value={this.state.note}
           onChange={this.handleChange.bind(this)}
-          placeholder="New Note" />
+          placeholder="New Note"
+        />
         <Button
           containerStyle={styles.button}
           disabled={this.state.note === ''}
-          onPress={this.handleSubmit.bind(this)}>
-          <Text style={[styles.buttonText, this.state.note != '' && styles.buttonEnabled]}> Submit </Text>
+          onPress={this.handleSubmit.bind(this)}
+        >
+          <Text style={[styles.buttonText, this.state.note !== '' && styles.buttonEnabled]}> Submit </Text>
         </Button>
       </View>
     )
   }
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      note: '',
+      error: ''
+    }
+  }
+
+  componentWillMount() {
+    API.getNotes(this.props.userInfo.login)
+      .then((notesJSON) => {
+        this.setState({
+          allNotes: notesJSONToArray(notesJSON),
+          loading: false
+        })
+      })
+  }
+
   renderItem = ({ item }) => {
-    const rightBtn = [{
+    let rightBtn = [{
       text: 'Delete',
       backgroundColor: '#f44336',
-      underlayColor: '#d32f2f'
-      //onPress: () => { this.deleteNote() }
-    }];
+      underlayColor: '#d32f2f',
+      onPress: () => {
+        API.deleteNote(this.props.userInfo.login, item.key)
+          .then(() => {
+            API.getNotes(this.props.userInfo.login)
+              .then((notes) => {
+                this.setState({
+                  allNotes: notesJSONToArray(notes)
+                })
+              })
+          })
+      }
+    }]
 
-    const leftBtn = [{
-      text: 'Edit',
-      backgroundColor: '#ff9800',
-      underlayColor: '#f57c00'
-      //onPress: () => { this.editNote() }
-    }];
-
+    const _onPressButton = () => {
+      console.log(' clickou')
+    }
 
     return (
       <Swipeout
-        style={styles.swipeItem}
         right={rightBtn}
-        left={leftBtn}>
-        <View style={styles.rowContainer}>
+        autoClose
+        backgroundColor="white"
+      >
+
+        <TouchableHighlight style={styles.rowContainer}
+          onPress={_onPressButton}
+          underlayColor="#eeeeee"
+        >
           <Text> {item.note}</Text>
-        </View>
+        </TouchableHighlight>
+
+
         <Separator />
       </Swipeout>
     )
   }
 
   render() {
-    console.log(this.props.notes)
     return (
       <View style={styles.container}>
-
         <FlatList
           data={this.state.allNotes}
           renderItem={this.renderItem}
           ListHeaderComponent={<Badge userInfo={this.props.userInfo} />}
+          ListFooterComponent={
+            <ActivityIndicator
+              style={styles.loading}
+              animating={this.state.loading}
+              size="large"
+            />
+          }
         />
         {this.footer()}
         <KeyboardSpacer />
@@ -116,5 +151,6 @@ class Notes extends Component {
     )
   }
 }
+
 
 export default Notes

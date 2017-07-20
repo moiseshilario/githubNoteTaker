@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 
 const Repositories = ({ userInfo, repos, navigator }) => {
-  openPage = (url, name) => {
+  const openPage = (url, name) => {
     console.log("tafa")
     navigator.push({
       component: Web,
@@ -21,13 +21,14 @@ const Repositories = ({ userInfo, repos, navigator }) => {
 
   const list = repos.map((item, index) => {
     const { html_url, name, stargazers_count, description } = item
-    
+
     return (
       <View key={index}>
         <View style={styles.rowContainer}>
           <TouchableHighlight
-            onPress={this.openPage.bind(this, html_url, name)}
-            underlayColor='transparent'>
+            onPress={openPage.bind(this, html_url, name)}
+            underlayColor="transparent"
+          >
             <Text style={styles.name}> {name} </Text>
           </TouchableHighlight>
           <Text style={styles.stars}> Stars: {stargazers_count}</Text>
@@ -47,7 +48,5 @@ const Repositories = ({ userInfo, repos, navigator }) => {
     </ScrollView>
   )
 }
-
-
 
 export default Repositories

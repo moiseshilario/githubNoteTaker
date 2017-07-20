@@ -12,9 +12,9 @@ const Badge = ({ userInfo }) => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={{ uri: avatar_url }}/>
-      <Text style={styles.name}> { name } </Text>
-      <Text style={styles.handle}> { login } </Text>
+      <Image style={styles.image} source={{ uri: avatar_url }} />
+      <Text style={styles.name}> {name} </Text>
+      <Text style={styles.handle}> {login} </Text>
     </View>
   )
 }

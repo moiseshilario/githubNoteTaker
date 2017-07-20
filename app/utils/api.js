@@ -12,12 +12,7 @@ const API = {
   getNotes: (username) => {
     username = username.toLowerCase().trim()
     let url = `https://github-saver-61205.firebaseio.com/${username}.json`;
-    return fetch(url)
-      .then((res) => res.json())
-      .then((notes) => {
-        const entries = Object.entries(notes)
-        return entries.map(([key, note]) => ({ key, note }))
-      })
+    return fetch(url).then((res) => res.json())
   },
   addNote: (username, note) => {
     username = username.toLowerCase().trim()
@@ -27,8 +22,13 @@ const API = {
       body: JSON.stringify(note)
     }).then((res) => res.json())
   },
-  deleteNote: (username, note) => {
-
+  deleteNote: (username, noteKey) => {
+    console.log(noteKey)
+    username = username.toLowerCase().trim()
+    let url = `https://github-saver-61205.firebaseio.com/${username}/${noteKey}.json`;
+    return fetch(url, {
+      method: 'delete'
+    }).then((res) => res.json())
   }
 }
 

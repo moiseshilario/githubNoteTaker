@@ -9,12 +9,11 @@ import {
   View,
   Text,
   Image,
-  TextArray,
   TouchableHighlight
 } from 'react-native'
 
 const Dashboard = ({ userInfo, navigator }) => {
-  goToProfile = () => {
+  const goToProfile = () => {
     navigator.push({
       component: Profile,
       title: 'Profile Page',
@@ -22,7 +21,7 @@ const Dashboard = ({ userInfo, navigator }) => {
     })
   }
 
-  goToRepos = () => {
+  const goToRepos = () => {
     API.getRepos(userInfo.login)
       .then((repos) => {
         navigator.push({
@@ -37,21 +36,12 @@ const Dashboard = ({ userInfo, navigator }) => {
       })
   }
 
-  goToNotes = () => {
-    API.getNotes(userInfo.login)
-      .then((notes) => {
-        console.log("notes: ")
-        console.log(notes)
-        notes = notes || []
-        navigator.push({
-          component: Notes,
-          title: 'Notes',
-          passProps: {
-            notes,
-            userInfo
-          }
-        })
-      })
+  const goToNotes = () => {
+    navigator.push({
+      component: Notes,
+      title: 'Notes',
+      passProps: { userInfo }
+    })
   }
 
   return (
@@ -60,21 +50,21 @@ const Dashboard = ({ userInfo, navigator }) => {
 
       <TouchableHighlight
         style={styles.btnProfile}
-        onPress={this.goToProfile}
+        onPress={goToProfile}
       >
         <Text style={styles.buttonText}> View Profile </Text>
       </TouchableHighlight>
 
       <TouchableHighlight
         style={styles.btnRepos}
-        onPress={this.goToRepos}
+        onPress={goToRepos}
       >
         <Text style={styles.buttonText}> View Repos </Text>
       </TouchableHighlight>
 
       <TouchableHighlight
         style={styles.btnNotes}
-        onPress={this.goToNotes.bind(this)}
+        onPress={goToNotes.bind(this)}
       >
         <Text style={styles.buttonText}> View Notes </Text>
       </TouchableHighlight>
@@ -83,4 +73,4 @@ const Dashboard = ({ userInfo, navigator }) => {
 }
 
 
-export default Dashboard 
+export default Dashboard

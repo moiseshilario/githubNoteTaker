@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     flex: 1
   },
   image: {
-    height: 350,
+    height: 350
   },
   buttonText: {
     fontSize: 24,
@@ -32,5 +32,4 @@ export const styles = StyleSheet.create({
     ...genericButtonStyles,
     backgroundColor: '#758BF4'
   }
-
 })

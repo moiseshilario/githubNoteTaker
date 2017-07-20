@@ -26,21 +26,20 @@ const Profile = ({ userInfo }) => {
       {
         topicObject.map(([key, title]) => {
           const value = userInfo[key]
-          
+
           return (
             <View key={key}>
               <View style={styles.rowContainer}>
                 <Text style={styles.rowTitle}> {title} </Text>
                 <Text style={styles.rowContent}> {value} </Text>
               </View>
-              <Separator></Separator>
+              <Separator />
             </View>
           )
         })
       }
     </ScrollView>
   )
-
 }
 
 export default Profile

@@ -34,9 +34,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row'
   },
-  swipeItem: {
-     backgroundColor: 'white'
+  loading: {
+    marginTop: 50
   }
-});
+})
 
 
