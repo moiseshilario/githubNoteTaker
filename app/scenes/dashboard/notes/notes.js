@@ -23,13 +23,13 @@ const notesJSONToArray = (notes) => {
 
 class Notes extends Component {
 
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState({
       note: e.nativeEvent.text
     })
   }
 
-  handleSubmit() {
+  handleSubmit = () => {
     let note = this.state.note
 
     this.setState({
@@ -56,13 +56,13 @@ class Notes extends Component {
         <TextInput
           style={styles.searchInput}
           value={this.state.note}
-          onChange={this.handleChange.bind(this)}
+          onChange={this.handleChange}
           placeholder="New Note"
         />
         <Button
           containerStyle={styles.button}
           disabled={this.state.note === ''}
-          onPress={this.handleSubmit.bind(this)}
+          onPress={this.handleSubmit}
         >
           <Text style={[styles.buttonText, this.state.note !== '' && styles.buttonEnabled]}> Submit </Text>
         </Button>

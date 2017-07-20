@@ -18,28 +18,27 @@ const topicObject = Object.entries({
   public_repos: 'Public Repos'
 })
 
-const Profile = ({ userInfo }) => {
+const Profile = ({ userInfo }) => (
+  
+  <ScrollView style={styles.container}>
+    <Badge userInfo={userInfo} />
+    {
+      topicObject.map(([key, title]) => {
+        const value = userInfo[key]
 
-  return (
-    <ScrollView style={styles.container}>
-      <Badge userInfo={userInfo} />
-      {
-        topicObject.map(([key, title]) => {
-          const value = userInfo[key]
-
-          return (
-            <View key={key}>
-              <View style={styles.rowContainer}>
-                <Text style={styles.rowTitle}> {title} </Text>
-                <Text style={styles.rowContent}> {value} </Text>
-              </View>
-              <Separator />
+        return (
+          <View key={key}>
+            <View style={styles.rowContainer}>
+              <Text style={styles.rowTitle}> {title} </Text>
+              <Text style={styles.rowContent}> {value} </Text>
             </View>
-          )
-        })
-      }
-    </ScrollView>
-  )
-}
+            <Separator />
+          </View>
+        )
+      })
+    }
+  </ScrollView>
+)
+
 
 export default Profile

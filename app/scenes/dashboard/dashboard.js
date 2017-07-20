@@ -64,7 +64,7 @@ const Dashboard = ({ userInfo, navigator }) => {
 
       <TouchableHighlight
         style={styles.btnNotes}
-        onPress={goToNotes.bind(this)}
+        onPress={goToNotes}
       >
         <Text style={styles.buttonText}> View Notes </Text>
       </TouchableHighlight>

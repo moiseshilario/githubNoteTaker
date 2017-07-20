@@ -12,13 +12,13 @@ import {
 } from 'react-native'
 
 class Main extends Component {
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({
       username: event.nativeEvent.text
     })
   }
 
-  handleSubmit() {
+  handleSubmit = () => {
     this.setState({
       isLoading: true
     })
@@ -65,11 +65,11 @@ class Main extends Component {
         <TextInput
           style={styles.searchInput}
           value={this.state.username}
-          onChange={this.handleChange.bind(this)}
+          onChange={this.handleChange}
         />
         <TouchableHighlight
           style={styles.button}
-          onPress={this.handleSubmit.bind(this)}
+          onPress={this.handleSubmit}
           underlayColor="white"
         >
           <Text style={styles.buttonText}> SEARCH </Text>
