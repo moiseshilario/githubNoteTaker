@@ -56,7 +56,7 @@ class Main extends Component {
 
   render() {
     let showErr = (
-      this.state.error ? <Text> {this.state.error} </Text> : <View />
+      this.state.error ? <Text style={styles.errorMsg}> {this.state.error} </Text> : <View />
     )
 
     return (

@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: '#111',
+    color: '#48BBEC',
     alignSelf: 'center'
   },
   button: {
@@ -42,5 +42,11 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
+  },
+  errorMsg: {
+    fontSize: 20,
+    color: 'white',
+    alignSelf: 'center',
+    //justifyContent: 'center'
   }
 })
