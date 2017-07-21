@@ -11,7 +11,6 @@ import {
 
 const Repositories = ({ userInfo, repos, navigator }) => {
   const openPage = (url, name) => {
-    console.log("tafa")
     navigator.push({
       component: Web,
       title: name,
