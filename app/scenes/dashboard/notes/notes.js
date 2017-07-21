@@ -1,5 +1,6 @@
 import API from '../../../utils/api'
 import { styles } from './notes.css'
+import EditNote from './edit_note'
 import React, { Component } from 'react'
 import { Badge, Separator } from '../../../components'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
@@ -70,6 +71,22 @@ class Notes extends Component {
     )
   }
 
+  refreshNotes() {
+    API.getNotes(this.props.userInfo.login)
+      .then((notesJSON) => {
+        this.setState({
+          allNotes: notesJSONToArray(notesJSON),
+          loading: false
+        })
+      })
+  }
+
+  updateList = (key, text) => {
+    API.updateNote(this.props.userInfo.login, key, text)
+      .then(() => this.refreshNotes())
+      .then(() => this.props.navigator.pop())
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -79,13 +96,7 @@ class Notes extends Component {
   }
 
   componentWillMount() {
-    API.getNotes(this.props.userInfo.login)
-      .then((notesJSON) => {
-        this.setState({
-          allNotes: notesJSONToArray(notesJSON),
-          loading: false
-        })
-      })
+    this.refreshNotes()
   }
 
   renderItem = ({ item }) => {
@@ -106,8 +117,20 @@ class Notes extends Component {
       }
     }]
 
-    const _onPressButton = () => {
-      console.log(' clickou')
+    const onNotePressed = (note) => {
+      this.props.navigator.push({
+        title: 'Note',
+        component: EditNote,
+        leftButtonSystemIcon: 'cancel',
+        onLeftButtonPress: () => {
+          this.props.navigator.pop()
+        },
+        passProps: {
+          note,
+          userInfo: this.props.userInfo,
+          updateList: this.updateList
+        }
+      })
     }
 
     return (
@@ -118,7 +141,7 @@ class Notes extends Component {
       >
 
         <TouchableHighlight style={styles.rowContainer}
-          onPress={_onPressButton}
+          onPress={() => onNotePressed(item)}
           underlayColor="#eeeeee"
         >
           <Text> {item.note}</Text>
