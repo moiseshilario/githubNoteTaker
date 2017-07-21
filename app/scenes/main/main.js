@@ -6,9 +6,11 @@ import Dashboard from '../dashboard/dashboard'
 import {
   View,
   Text,
+  Keyboard,
   TextInput,
   ActivityIndicator,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableWithoutFeedback
 } from 'react-native'
 
 class Main extends Component {
@@ -60,28 +62,31 @@ class Main extends Component {
     )
 
     return (
-      <View style={styles.mainContainer} >
-        <Text style={styles.title}> Search for a Github User </Text>
-        <TextInput
-          style={styles.searchInput}
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.handleSubmit}
-          underlayColor="white"
-        >
-          <Text style={styles.buttonText}> SEARCH </Text>
-        </TouchableHighlight>
-        <ActivityIndicator
-          animating={this.state.isLoading}
-          color="#111"
-          size="large"
-          hidesWhenStop="true"
-        />
-        {showErr}
-      </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.mainContainer} >
+
+          <Text style={styles.title}> Search for a Github User </Text>
+          <TextInput
+            style={styles.searchInput}
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.handleSubmit}
+            underlayColor="white"
+          >
+            <Text style={styles.buttonText}> SEARCH </Text>
+          </TouchableHighlight>
+          <ActivityIndicator
+            animating={this.state.isLoading}
+            color="#111"
+            size="large"
+            hidesWhenStop="true"
+          />
+          {showErr}
+        </View>
+      </TouchableWithoutFeedback>
     )
   }
 }
