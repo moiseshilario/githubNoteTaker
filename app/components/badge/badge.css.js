@@ -23,5 +23,14 @@ export const styles = StyleSheet.create({
     borderRadius: 65,
     marginTop: 10,
     alignSelf: 'center'
+  },
+  profile: {
+    backgroundColor: '#48BBEC'
+  },
+  repos: {
+    backgroundColor: '#E77AAE'
+  },
+  notes: {
+    backgroundColor: '#FF8C00'
   }
 })

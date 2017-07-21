@@ -30,6 +30,6 @@ export const styles = StyleSheet.create({
   },
   btnNotes: {
     ...genericButtonStyles,
-    backgroundColor: '#758BF4'
+    backgroundColor: '#FF8C00'
   }
 })

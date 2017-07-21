@@ -7,11 +7,11 @@ import {
   Image
 } from 'react-native'
 
-const Badge = ({ userInfo }) => {
+const Badge = ({ userInfo, screen }) => {
   const { avatar_url, name, login } = userInfo
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styles[screen]]}>
       <Image style={styles.image} source={{ uri: avatar_url }} />
       <Text style={styles.name}> {name} </Text>
       <Text style={styles.handle}> {login} </Text>

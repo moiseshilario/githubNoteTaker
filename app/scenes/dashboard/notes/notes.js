@@ -154,12 +154,13 @@ class Notes extends Component {
   }
 
   render() {
+    let screen = 'notes'
     return (
       <View style={styles.container}>
         <FlatList
           data={this.state.allNotes}
           renderItem={this.renderItem}
-          ListHeaderComponent={<Badge userInfo={this.props.userInfo} />}
+          ListHeaderComponent={<Badge userInfo={this.props.userInfo} screen={screen} />}
           ListFooterComponent={
             <ActivityIndicator
               style={styles.loading}

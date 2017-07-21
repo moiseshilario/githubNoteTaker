@@ -40,10 +40,10 @@ const Repositories = ({ userInfo, repos, navigator }) => {
       </View>
     )
   })
-
+  const screen = 'repos'
   return (
     <ScrollView style={styles.container}>
-      <Badge userInfo={userInfo} />
+      <Badge userInfo={userInfo} screen={screen} />
       {list}
     </ScrollView>
   )
