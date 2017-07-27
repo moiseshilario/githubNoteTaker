@@ -1,13 +1,14 @@
-import { styles } from './badge.css'
 import React from 'react'
 
 import {
+  Image,
   Text,
-  View,
-  Image
+  View
 } from 'react-native'
 
-const Badge = ({ userInfo, screen }) => {
+import { styles } from './badge.css'
+
+export const Badge = ({ userInfo, screen }) => {
   const { avatar_url, name, login } = userInfo
 
   return (
@@ -19,4 +20,3 @@ const Badge = ({ userInfo, screen }) => {
   )
 }
 
-export { Badge }

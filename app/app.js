@@ -1,11 +1,11 @@
 import React from 'react'
-import Main from './scenes/main/main'
 
 import {
-  StyleSheet,
-  NavigatorIOS
+  NavigatorIOS,
+  StyleSheet
 } from 'react-native'
 
+import Main from './scenes/main/main'
 
 const styles = StyleSheet.create({
   container: {

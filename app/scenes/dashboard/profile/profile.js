@@ -1,12 +1,13 @@
-import { Badge, Separator } from '../../../components'
-import { styles } from './profile.css'
 import React from 'react'
 
 import {
+  ScrollView,
   Text,
-  View,
-  ScrollView
+  View
 } from 'react-native'
+
+import { styles } from './profile.css'
+import { Badge, Separator } from '../../../components'
 
 const topicObject = Object.entries({
   company: 'Company',

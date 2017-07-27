@@ -1,13 +1,14 @@
-import { Badge, Separator, Web } from '../../../components'
 import React from 'react'
-import { styles } from './repositories.css'
 
 import {
-  Text,
-  View,
   ScrollView,
-  TouchableHighlight
+  Text,
+  TouchableHighlight,
+  View
 } from 'react-native'
+
+import { styles } from './repositories.css'
+import { Badge, Separator, Web } from '../../../components'
 
 const Repositories = ({ userInfo, repos, navigator }) => {
   const openPage = (url, name) => {

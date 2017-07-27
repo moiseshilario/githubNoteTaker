@@ -1,13 +1,15 @@
-import { styles } from './edit_note.css'
 import React, { Component } from 'react'
-import KeyboardSpacer from 'react-native-keyboard-spacer'
-import Button from 'react-native-button'
 
 import {
   View,
   Text,
   TextInput
 } from 'react-native'
+
+import Button from 'react-native-button'
+import KeyboardSpacer from 'react-native-keyboard-spacer'
+
+import { styles } from './edit_note.css'
 
 class EditNote extends Component {
 

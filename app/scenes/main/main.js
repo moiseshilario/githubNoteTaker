@@ -4,13 +4,13 @@ import React, { Component } from 'react'
 import Dashboard from '../dashboard/dashboard'
 
 import {
-  View,
-  Text,
-  Keyboard,
-  TextInput,
   ActivityIndicator,
+  Keyboard,
+  Text,
+  TextInput,
   TouchableHighlight,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  View
 } from 'react-native'
 
 class Main extends Component {

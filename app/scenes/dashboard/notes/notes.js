@@ -1,27 +1,28 @@
 import React, { Component } from 'react'
-import API from '../../../utils/api'
-import { styles } from './notes.css'
-import EditNote from './edit_note'
-import { Badge, Separator } from '../../../components'
-import KeyboardSpacer from 'react-native-keyboard-spacer'
-import Button from 'react-native-button'
-import Swipeout from 'react-native-swipeout'
-import { RED, DARK_RED, UNDERLAY_GREY } from '../../../styles/colors'
 
 import {
-  View,
-  Text,
-  FlatList,
-  TextInput,
   ActivityIndicator,
-  TouchableHighlight
+  FlatList,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  View
 } from 'react-native'
+
+import Button from 'react-native-button'
+import KeyboardSpacer from 'react-native-keyboard-spacer'
+import Swipeout from 'react-native-swipeout'
+
+import EditNote from './edit_note'
+import { styles } from './notes.css'
+import { Badge, Separator } from '../../../components'
+import { RED, DARK_RED, UNDERLAY_GREY } from '../../../styles/colors'
+import API from '../../../utils/api'
 
 const notesJSONToArray = (notes) => {
   const entries = Object.entries(notes)
   return entries.map(([key, note]) => ({ key, note }))
 }
-
 
 class Notes extends Component {
 

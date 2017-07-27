@@ -1,16 +1,17 @@
 import React from 'react'
-import API from '../../utils/api'
-import Profile from './profile/profile'
-import Notes from './notes/notes'
-import { styles } from './dashboard.css'
-import Repositories from './repositories/repositories'
 
 import {
-  View,
-  Text,
   Image,
-  TouchableHighlight
+  Text,
+  TouchableHighlight,
+  View
 } from 'react-native'
+
+import { styles } from './dashboard.css'
+import Notes from './notes/notes'
+import Profile from './profile/profile'
+import Repositories from './repositories/repositories'
+import API from '../../utils/api'
 
 const Dashboard = ({ userInfo, navigator }) => {
   const goToProfile = () => {
