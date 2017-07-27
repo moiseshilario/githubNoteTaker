@@ -20,6 +20,7 @@ import { RED, DARK_RED, UNDERLAY_GREY } from '../../../styles/colors'
 import API from '../../../utils/api'
 
 const notesJSONToArray = (notes) => {
+  notes = notes || {}
   const entries = Object.entries(notes)
   return entries.map(([key, note]) => ({ key, note }))
 }
@@ -43,6 +44,7 @@ class Notes extends Component {
       .then((data) => {
         API.getNotes(this.props.userInfo.login)
           .then((notes) => {
+            console.log(notes)
             this.setState({
               allNotes: notesJSONToArray(notes)
             })

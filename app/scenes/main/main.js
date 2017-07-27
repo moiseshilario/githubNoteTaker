@@ -57,10 +57,6 @@ class Main extends Component {
   }
 
   render() {
-    let showErr = (
-      this.state.error ? <Text style={styles.errorMsg}> {this.state.error} </Text> : <View />
-    )
-
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.mainContainer} >
@@ -80,11 +76,11 @@ class Main extends Component {
           </TouchableHighlight>
           <ActivityIndicator
             animating={this.state.isLoading}
-            color="#111"
+            color="black"
             size="large"
             hidesWhenStop="true"
           />
-          {showErr}
+          {this.state.error && <Text style={styles.errorMsg}> {this.state.error} </Text>}
         </View>
       </TouchableWithoutFeedback>
     )
