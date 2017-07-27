@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { BLUE, GREEN, ORANGE } from '../../styles/colors'
+
 const genericButtonStyles = {
   flexDirection: 'row',
   alignSelf: 'stretch',
@@ -22,14 +24,14 @@ export const styles = StyleSheet.create({
   },
   btnProfile: {
     ...genericButtonStyles,
-    backgroundColor: '#48BBEC'
+    backgroundColor: BLUE
   },
   btnRepos: {
     ...genericButtonStyles,
-    backgroundColor: '#E77AAE'
+    backgroundColor: GREEN
   },
   btnNotes: {
     ...genericButtonStyles,
-    backgroundColor: '#FF8C00'
+    backgroundColor: ORANGE
   }
 })

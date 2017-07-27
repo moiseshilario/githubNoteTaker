@@ -1,11 +1,12 @@
+import React, { Component } from 'react'
 import API from '../../../utils/api'
 import { styles } from './notes.css'
 import EditNote from './edit_note'
-import React, { Component } from 'react'
 import { Badge, Separator } from '../../../components'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
 import Button from 'react-native-button'
 import Swipeout from 'react-native-swipeout'
+import { RED, DARK_RED, UNDERLAY_GREY } from '../../../styles/colors'
 
 import {
   View,
@@ -102,8 +103,8 @@ class Notes extends Component {
   renderItem = ({ item }) => {
     let rightBtn = [{
       text: 'Delete',
-      backgroundColor: '#f44336',
-      underlayColor: '#d32f2f',
+      backgroundColor: RED,
+      underlayColor: DARK_RED,
       onPress: () => {
         API.deleteNote(this.props.userInfo.login, item.key)
           .then(() => {
@@ -142,7 +143,7 @@ class Notes extends Component {
 
         <TouchableHighlight style={styles.rowContainer}
           onPress={() => onNotePressed(item)}
-          underlayColor="#eeeeee"
+          underlayColor={UNDERLAY_GREY}
         >
           <Text> {item.note}</Text>
         </TouchableHighlight>
@@ -154,13 +155,12 @@ class Notes extends Component {
   }
 
   render() {
-    let screen = 'notes'
     return (
       <View style={styles.container}>
         <FlatList
           data={this.state.allNotes}
           renderItem={this.renderItem}
-          ListHeaderComponent={<Badge userInfo={this.props.userInfo} screen={screen} />}
+          ListHeaderComponent={<Badge userInfo={this.props.userInfo} screen={'notes'} />}
           ListFooterComponent={
             <ActivityIndicator
               style={styles.loading}

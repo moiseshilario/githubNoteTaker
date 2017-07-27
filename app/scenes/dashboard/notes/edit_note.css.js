@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { BLUE, DISABLED_GREY } from '../../../styles/colors'
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -15,7 +17,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 3,
     backgroundColor: 'white',
-    color: '#111',
+    color: 'black',
     fontSize: 18,
     height: 105,
     padding: 10
@@ -25,10 +27,10 @@ export const styles = StyleSheet.create({
     height: 60,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#A9A9A9'
+    backgroundColor: DISABLED_GREY
   },
   saveBtnEnabled: {
-    backgroundColor: '#48BBEC'
+    backgroundColor: BLUE
   },
   saveBtnText: {
     color: 'white',

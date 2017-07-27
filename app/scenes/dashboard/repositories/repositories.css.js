@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { BLUE } from '../../../styles/colors'
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1
@@ -10,12 +12,12 @@ export const styles = StyleSheet.create({
     padding: 10
   },
   name: {
-    color: '#48BBEC',
+    color: BLUE,
     fontSize: 18,
     paddingBottom: 5
   },
   stars: {
-    color: '#48BBEC',
+    color: BLUE,
     fontSize: 14,
     paddingBottom: 5
   },
@@ -23,4 +25,4 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     paddingBottom: 5
   }
-});
+})

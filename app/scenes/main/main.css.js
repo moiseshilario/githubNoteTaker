@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { BLUE } from '../../styles/colors'
 
 export const styles = StyleSheet.create({
   mainContainer: {
@@ -6,11 +7,11 @@ export const styles = StyleSheet.create({
     margin: 0,
     padding: 25,
     flexDirection: 'column',
-    backgroundColor: '#48BBEC',
+    backgroundColor: BLUE,
     justifyContent: 'flex-start'
   },
   title: {
-    color: '#fff',
+    color: 'white',
     fontSize: 20,
     marginTop: 80,
     marginBottom: 20,
@@ -28,7 +29,7 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: '#48BBEC',
+    color: BLUE,
     alignSelf: 'center'
   },
   button: {

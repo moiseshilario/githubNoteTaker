@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native'
 
+import { BLUE, GREEN, ORANGE } from '../../styles/colors'
+
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#48BBEC',
     paddingBottom: 10
   },
   name: {
@@ -25,12 +26,12 @@ export const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   profile: {
-    backgroundColor: '#48BBEC'
+    backgroundColor: BLUE
   },
   repos: {
-    backgroundColor: '#E77AAE'
+    backgroundColor: GREEN
   },
   notes: {
-    backgroundColor: '#FF8C00'
+    backgroundColor: ORANGE
   }
 })

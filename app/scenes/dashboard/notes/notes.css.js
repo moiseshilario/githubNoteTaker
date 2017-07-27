@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { BLUE, LIGHT_GREY } from '../../../styles/colors'
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -7,11 +9,11 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: '#cfcfcf'
+    color: LIGHT_GREY
   },
   button: {
     height: 60,
-    backgroundColor: '#48BBEC',
+    backgroundColor: BLUE,
     flex: 3,
     alignItems: 'center',
     justifyContent: 'center'
@@ -23,14 +25,14 @@ export const styles = StyleSheet.create({
     height: 60,
     padding: 10,
     fontSize: 18,
-    color: '#111',
+    color: 'black',
     flex: 10
   },
   rowContainer: {
     padding: 20
   },
   footerContainer: {
-    backgroundColor: '#E3E3E3',
+    backgroundColor: LIGHT_GREY,
     alignItems: 'center',
     flexDirection: 'row'
   },

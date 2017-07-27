@@ -19,9 +19,9 @@ const topicObject = Object.entries({
 })
 
 const Profile = ({ userInfo }) => (
-  
+
   <ScrollView style={styles.container}>
-    <Badge userInfo={userInfo} />
+    <Badge userInfo={userInfo} screen={'profile'} />
     {
       topicObject.map(([key, title]) => {
         const value = userInfo[key]

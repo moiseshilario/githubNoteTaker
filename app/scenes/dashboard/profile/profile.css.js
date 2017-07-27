@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { BLUE } from '../../../styles/colors'
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1
@@ -13,7 +15,7 @@ export const styles = StyleSheet.create({
     padding: 10
   },
   rowTitle: {
-    color: '#48BBEC',
+    color: BLUE,
     fontSize: 16
   },
   rowContent: {
