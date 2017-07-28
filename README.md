@@ -4,8 +4,6 @@ This is a simple react-native app, used to see github users informations and tak
 
 ### Prerequisites
 
-Install [Xcode](https://developer.apple.com/xcode/) to run the simulator
-
 Install [Homebrew](https://brew.sh/)
 
 ```bash
@@ -18,13 +16,24 @@ Intall the React-native-cli
 npm install -g react-native-cli
 ```
 
+* For better information about installation (iOS/android) check [React-Native getting started guide](https://facebook.github.io/react-native/docs/getting-started.html) 
+
 ### Install
 
 Enter in the project folder and run:
 
 ```bash
 npm install
+```
+
+* To run in ios: 
+```bash
 react-native run-ios
+```
+
+* To run in android (with a device)
+```bash
+react-native run-android
 ```
 
 ## Acknowledgments
