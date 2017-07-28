@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import {
+  Platform,
   View,
   Text,
   TextInput
@@ -10,6 +11,7 @@ import Button from 'react-native-button'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
 
 import { styles } from './edit_note.css'
+import { DARK_BLUE } from '../../../styles/colors'
 
 class EditNote extends Component {
 
@@ -38,11 +40,11 @@ class EditNote extends Component {
       <View style={styles.container}>
         <View style={styles.textInputContainer}>
           <TextInput
-            multiline
-            numberOfLines={4}
             style={styles.editNoteText}
-            value={this.state.noteText}
+            multiline
             onChange={this.handleChange}
+            selectionColor={DARK_BLUE}
+            value={this.state.noteText}
           />
         </View>
         <Button
@@ -52,7 +54,7 @@ class EditNote extends Component {
         >
           <Text style={styles.saveBtnText}> Save </Text>
         </Button>
-        <KeyboardSpacer />
+         { Platform.OS === 'ios' && <KeyboardSpacer /> }
       </View>
     )
   }

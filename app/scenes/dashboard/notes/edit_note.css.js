@@ -8,25 +8,23 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   textInputContainer: {
-    flex: 10,
-    height: 300
+    flex: 1
   },
   editNoteText: {
-    margin: 10,
-    flex: 1,
-    borderRadius: 3,
     backgroundColor: 'white',
     color: 'black',
+    flex: 1,
     fontSize: 18,
-    height: 105,
-    padding: 10
+    margin: 10,
+    padding: 10,
+    textAlignVertical: 'top'
   },
   saveBtnDisabled: {
-    marginTop: 5,
-    height: 60,
     alignItems: 'center',
+    backgroundColor: DISABLED_GREY,
     justifyContent: 'center',
-    backgroundColor: DISABLED_GREY
+    height: 60,
+    marginTop: 5
   },
   saveBtnEnabled: {
     backgroundColor: BLUE
