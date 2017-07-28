@@ -1,6 +1,6 @@
 # githubNoteTaker
 
-This is a simple react-native iOS app, used to see github users informations and take notes about them.
+This is a simple react-native app, used to see github users informations and take notes about them.
 
 ### Prerequisites
 
