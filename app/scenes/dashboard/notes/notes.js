@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {
   ActivityIndicator,
   FlatList,
+  Platform,
   Text,
   TextInput,
   TouchableHighlight,
@@ -164,7 +165,7 @@ class Notes extends Component {
           }
         />
         {this.footer()}
-        <KeyboardSpacer />
+        { Platform.OS === 'ios' && <KeyboardSpacer /> }
       </View>
     )
   }
