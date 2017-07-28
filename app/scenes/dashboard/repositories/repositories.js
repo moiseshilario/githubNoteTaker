@@ -8,15 +8,12 @@ import {
 } from 'react-native'
 
 import { styles } from './repositories.css'
-import { Badge, Separator, Web } from '../../../components'
+import { Badge, Separator } from '../../../components'
+import { Actions } from 'react-native-router-flux'
 
 const Repositories = ({ userInfo, repos, navigator }) => {
   const openPage = (url, name) => {
-    navigator.push({
-      component: Web,
-      title: name,
-      passProps: { url }
-    })
+    Actions.web({ url, title: name })
   }
 
   const list = repos.map((item, index) => {

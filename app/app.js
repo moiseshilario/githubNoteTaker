@@ -1,27 +1,23 @@
 import React from 'react'
 
-import { StyleSheet } from 'react-native'
-
 import { Router, Scene } from 'react-native-router-flux'
 
-import Home from './scenes/home/home'
+import { Web } from './components/helpers/web_view'
 import Dashboard from './scenes/dashboard/dashboard'
-import Notes from './scenes/dashboard/notes/notes'
+import Home from './scenes/home/home'
 import EditNotes from './scenes/dashboard/notes/edit_note'
+import Notes from './scenes/dashboard/notes/notes'
 import Profile from './scenes/dashboard/profile/profile'
 import Repositories from './scenes/dashboard/repositories/repositories'
 
 const githubNotetaker = () => (
   <Router>
-    <Scene
-      key="root"
-    >
+    <Scene key="root">
       <Scene
         key="home"
         component={Home}
         initial
         title="Github Notetaker"
-        style={styles.container}
       />
       <Scene
         key="dashboard"
@@ -30,29 +26,29 @@ const githubNotetaker = () => (
       <Scene
         key="profile"
         component={Profile}
+        title="Profile"
       />
       <Scene
         key="repositories"
         component={Repositories}
+        title="Repositories"
       />
       <Scene
         key="notes"
         component={Notes}
+        title="Notes"
       />
       <Scene
-        key="editNotes"
+        key="editNote"
         component={EditNotes}
+        title="Edit Note"
       />
-
+      <Scene
+        key="web"
+        component={Web}
+      />
     </Scene>
   </Router>
 )
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#111111'
-  }
-})
 
 export default githubNotetaker

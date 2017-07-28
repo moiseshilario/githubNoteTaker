@@ -11,9 +11,9 @@ import {
 
 import Button from 'react-native-button'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
+import { Actions } from 'react-native-router-flux'
 import Swipeout from 'react-native-swipeout'
 
-import EditNote from './edit_note'
 import { styles } from './notes.css'
 import { Badge, Separator } from '../../../components'
 import { RED, DARK_RED, UNDERLAY_GREY } from '../../../styles/colors'
@@ -44,7 +44,6 @@ class Notes extends Component {
       .then((data) => {
         API.getNotes(this.props.userInfo.login)
           .then((notes) => {
-            console.log(notes)
             this.setState({
               allNotes: notesJSONToArray(notes)
             })
@@ -88,7 +87,7 @@ class Notes extends Component {
   updateList = (key, text) => {
     API.updateNote(this.props.userInfo.login, key, text)
       .then(() => this.refreshNotes())
-      .then(() => this.props.navigator.pop())
+      .then(() => Actions.pop())
   }
 
   constructor(props) {
@@ -122,18 +121,10 @@ class Notes extends Component {
     }]
 
     const onNotePressed = (note) => {
-      this.props.navigator.push({
-        title: 'Note',
-        component: EditNote,
-        leftButtonSystemIcon: 'cancel',
-        onLeftButtonPress: () => {
-          this.props.navigator.pop()
-        },
-        passProps: {
-          note,
-          userInfo: this.props.userInfo,
-          updateList: this.updateList
-        }
+      Actions.editNote({
+        note,
+        userInfo: this.props.userInfo,
+        updateList: this.updateList
       })
     }
 
