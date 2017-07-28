@@ -7,42 +7,25 @@ import {
   View
 } from 'react-native'
 
+import { Actions } from 'react-native-router-flux'
+
 import { styles } from './dashboard.css'
-import Notes from './notes/notes'
-import Profile from './profile/profile'
-import Repositories from './repositories/repositories'
 import API from '../../utils/api'
 
 const Dashboard = ({ userInfo, navigator }) => {
   const goToProfile = () => {
-    navigator.push({
-      component: Profile,
-      title: 'Profile Page',
-      passProps: { userInfo }
-    })
+    Actions.profile({ userInfo })
   }
 
   const goToRepos = () => {
     API.getRepos(userInfo.login)
       .then((repos) => {
-        navigator.push({
-          component: Repositories,
-          title: 'Repos',
-          passProps: {
-            userInfo,
-            repos,
-            navigator
-          }
-        })
+        Actions.repositories({ userInfo, repos })
       })
   }
 
   const goToNotes = () => {
-    navigator.push({
-      component: Notes,
-      title: 'Notes',
-      passProps: { userInfo }
-    })
+    Actions.notes({ userInfo })
   }
 
   return (
