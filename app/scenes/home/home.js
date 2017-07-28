@@ -1,7 +1,4 @@
-import API from '../../utils/api'
-import { styles } from './main.css'
 import React, { Component } from 'react'
-import Dashboard from '../dashboard/dashboard'
 
 import {
   ActivityIndicator,
@@ -13,7 +10,13 @@ import {
   View
 } from 'react-native'
 
-class Main extends Component {
+import { Actions } from 'react-native-router-flux'
+
+import { styles } from './home.css'
+import API from '../../utils/api'
+
+
+class Home extends Component {
   handleChange = (event) => {
     this.setState({
       username: event.nativeEvent.text
@@ -33,11 +36,7 @@ class Main extends Component {
           })
         }
         else {
-          this.props.navigator.push({
-            title: res.name || 'Select an Option',
-            component: Dashboard,
-            passProps: { userInfo: res }
-          })
+          Actions.dashboard({ userInfo: res, title: res.name })
           this.setState({
             isLoading: false,
             error: false,
@@ -87,4 +86,4 @@ class Main extends Component {
   }
 }
 
-export default Main
+export default Home
