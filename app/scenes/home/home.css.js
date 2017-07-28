@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 import { BLUE } from '../../styles/colors'
 
 export const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
-    margin: 0,
-    padding: 25,
-    flexDirection: 'column',
     backgroundColor: BLUE,
-    justifyContent: 'flex-start'
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    margin: 0,
+    padding: 25
   },
   title: {
     color: 'white',
@@ -18,35 +18,35 @@ export const styles = StyleSheet.create({
     textAlign: 'center'
   },
   searchInput: {
-    height: 50,
-    padding: 4,
-    marginRight: 5,
-    fontSize: 23,
-    borderWidth: 1,
-    borderColor: 'white',
+    borderColor: Platform.OS === 'ios' ? 'white' : 'transparent',
     borderRadius: 8,
-    color: 'white'
+    borderWidth: 1,
+    color: 'white',
+    fontSize: 23,
+    height: 50,
+    marginRight: 5,
+    padding: 4
   },
   buttonText: {
-    fontSize: 18,
+    alignSelf: 'center',
     color: BLUE,
-    alignSelf: 'center'
+    fontSize: 18
   },
   button: {
-    height: 45,
-    flexDirection: 'row',
+    alignSelf: 'stretch',
     backgroundColor: 'white',
     borderColor: 'white',
-    borderWidth: 1,
     borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: 'row',
+    height: 45,
+    justifyContent: 'center',
     marginBottom: 10,
-    marginTop: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
+    marginTop: 10
   },
   errorMsg: {
-    fontSize: 20,
+    alignSelf: 'center',
     color: 'white',
-    alignSelf: 'center'
+    fontSize: 20
   }
 })

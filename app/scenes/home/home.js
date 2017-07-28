@@ -13,6 +13,7 @@ import {
 import { Actions } from 'react-native-router-flux'
 
 import { styles } from './home.css'
+import { DARK_BLUE } from '../../styles/colors'
 import API from '../../utils/api'
 
 
@@ -24,6 +25,7 @@ class Home extends Component {
   }
 
   handleSubmit = () => {
+    Keyboard.dismiss()
     this.setState({
       isLoading: true
     })
@@ -65,6 +67,10 @@ class Home extends Component {
             style={styles.searchInput}
             value={this.state.username}
             onChange={this.handleChange}
+            returnKeyType="done"
+            onSubmitEditing={this.handleSubmit}
+            underlineColorAndroid="white"
+            selectionColor={DARK_BLUE}
           />
           <TouchableHighlight
             style={styles.button}
